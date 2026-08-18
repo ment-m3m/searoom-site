@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SEAROOM プライバシーポリシー。集める情報・使いみち・保存期間・保管場所（日本国内）・削除などを正直に説明します。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🌊</text></svg>">
+<title>プライバシーポリシー — SEAROOM</title>
+<style>
+  :root{
+    --paper:#f4f7f7; --paper2:#ffffff; --sunk:#eef3f3;
+    --ink:#15282e; --body:#3c4d54; --soft:#6f838b; --faint:#95a6ad;
+    --line:#d9e2e4; --line2:#e8eeef;
+    --sea:#1a6377; --sea-deep:#124b5b; --sea-soft:#e2edef;
+    --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Songti SC",serif;
+    --sans:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --paper:#0a1a20; --paper2:#0f2831; --sunk:#0c222b;
+    --ink:#e3edf0; --body:#aec1c9; --soft:#84979f; --faint:#607781;
+    --line:#1d3b45; --line2:#173039;
+    --sea:#67b6cb; --sea-deep:#8fcede; --sea-soft:#0f333f;
+  }}
+  :root[data-theme="dark"]{
+    --paper:#0a1a20; --paper2:#0f2831; --sunk:#0c222b;
+    --ink:#e3edf0; --body:#aec1c9; --soft:#84979f; --faint:#607781;
+    --line:#1d3b45; --line2:#173039;
+    --sea:#67b6cb; --sea-deep:#8fcede; --sea-soft:#0f333f;
+  }
+  :root[data-theme="light"]{
+    --paper:#f4f7f7; --paper2:#ffffff; --sunk:#eef3f3;
+    --ink:#15282e; --body:#3c4d54; --soft:#6f838b; --faint:#95a6ad;
+    --line:#d9e2e4; --line2:#e8eeef;
+    --sea:#1a6377; --sea-deep:#124b5b; --sea-soft:#e2edef;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0; background:var(--paper); color:var(--body);
+    font-family:var(--sans); font-size:16px; line-height:1.9;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  a{color:var(--sea)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset:3px;border-radius:1px}
+
+  .nav{
+    position:sticky; top:0; z-index:10;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    -webkit-backdrop-filter:saturate(1.4) blur(8px); backdrop-filter:saturate(1.4) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .in{max-width:960px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);letter-spacing:.06em;text-decoration:none}
+  .brand .dot{color:var(--sea)}
+  .nav .links{display:flex;gap:26px}
+  .nav .links a{font-size:13.5px;color:var(--soft);text-decoration:none;letter-spacing:.02em}
+  .nav .links a:hover{color:var(--ink)}
+  .nav .links a[aria-current]{color:var(--ink);border-bottom:1px solid var(--sea);padding-bottom:2px}
+  @media (max-width:560px){.nav .links{gap:18px}.nav .links a{font-size:12.5px}}
+
+  .shell{max-width:960px;margin:0 auto;padding:0 24px}
+
+  .pagehead{padding:64px 0 0;max-width:70ch}
+  .pagehead .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin:0 0 8px}
+  .pagehead h1{font-family:var(--serif);color:var(--ink);font-size:clamp(26px,5vw,36px);font-weight:600;letter-spacing:.04em;margin:0;line-height:1.4}
+  .pagehead .updated{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.03em;margin:16px 0 0}
+  .horizon{height:1px;background:linear-gradient(90deg,transparent,var(--sea) 12%,var(--sea) 88%,transparent);opacity:.34;margin:40px 0 0}
+
+  .body-wrap{padding:36px 0 60px}
+  .lead-doc{color:var(--body);font-size:15.5px;max-width:66ch;margin:0 0 12px}
+  .lead-doc b{color:var(--ink);font-weight:600}
+
+  article.clause{padding:30px 0;border-top:1px solid var(--line);max-width:70ch}
+  article.clause h2{font-family:var(--serif);color:var(--ink);font-size:19px;font-weight:600;letter-spacing:.03em;margin:0 0 14px;display:flex;gap:14px;align-items:baseline;scroll-margin-top:76px}
+  article.clause h2 .num{font-family:var(--mono);font-size:13px;color:var(--sea);font-weight:400;flex-shrink:0;padding-top:2px}
+  article.clause p{margin:0 0 12px;font-size:15px}
+  article.clause p:last-child{margin-bottom:0}
+
+  .deflist{margin:6px 0 14px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .deflist .r{display:flex;border-bottom:1px solid var(--line2)}
+  .deflist .r:last-child{border-bottom:0}
+  .deflist .k{width:38%;flex-shrink:0;padding:12px 16px;font-weight:600;color:var(--ink);font-size:13.5px;background:var(--sunk)}
+  .deflist .v{padding:12px 16px;font-size:13.5px}
+  @media (max-width:520px){.deflist .r{flex-direction:column}.deflist .k{width:auto}}
+
+  .aside{border-left:2px solid var(--sea);padding:4px 0 4px 16px;margin:6px 0 14px;color:var(--body);font-size:14px}
+  .aside b{color:var(--ink)}
+  .tbd{font-size:12.5px;color:var(--soft)}
+  code{font-family:var(--mono);font-size:12.5px;background:var(--sunk);padding:1px 6px;border-radius:2px;color:var(--ink)}
+
+  .contact{margin:14px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;padding:20px 22px;background:var(--paper2);border:1px solid var(--line);border-radius:3px;max-width:70ch}
+  .contact .lbl{font-size:13px;color:var(--soft)}
+  .contact a.mail{font-family:var(--mono);font-size:17px;color:var(--sea);text-decoration:none;font-weight:600;border-bottom:1px solid var(--line)}
+  .contact a.mail:hover{border-color:var(--sea)}
+  .contact .prov{width:100%;font-size:12.5px;color:var(--faint);margin-top:4px}
+
+  footer{border-top:1px solid var(--line);margin-top:20px}
+  footer .in{max-width:960px;margin:0 auto;padding:34px 24px 56px;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-start}
+  footer .brand2{font-family:var(--serif);font-size:16px;color:var(--ink);letter-spacing:.06em}
+  footer .brand2 span{display:block;font-family:var(--sans);font-size:12.5px;color:var(--soft);letter-spacing:0;margin-top:6px}
+  footer nav{display:flex;gap:22px;flex-wrap:wrap}
+  footer nav a{font-size:13px;color:var(--soft);text-decoration:none}
+  footer nav a:hover{color:var(--ink)}
+  footer .copy{width:100%;border-top:1px solid var(--line2);padding-top:16px;font-size:12px;color:var(--faint);font-family:var(--mono);letter-spacing:.03em}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="in">
+    <a class="brand" href="index.html">SEAROOM<span class="dot">.</span></a>
+    <nav class="links">
+      <a href="index.html#features">特徴</a>
+      <a href="#top" aria-current="page">プライバシー</a>
+      <a href="index.html#support">サポート</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<div class="shell">
+  <div class="pagehead">
+    <p class="eyebrow">Privacy Policy</p>
+    <h1>プライバシーポリシー</h1>
+    <p class="updated">最終更新日：2026年8月18日</p>
+  </div>
+  <div class="horizon"></div>
+
+  <div class="body-wrap">
+    <p class="lead-doc">SEAROOM（以下「本サービス」）は、評価されるためではなく、安心して言葉を置ける場所を目指した匿名SNSです。本ポリシーは、本サービスがどんな情報を、なぜ、どれくらいの期間あつかうかを、できるだけ正直に説明するものです。</p>
+    <p class="lead-doc">本サービスは、<b>メールアドレス・電話番号・氏名を一切求めません。</b>アカウントは端末内で発行される匿名のIDだけで成り立ちます。</p>
+
+    <article class="clause" id="collect">
+      <h2><span class="num">01</span>集める情報</h2>
+      <p>本サービスが取得・保存するのは、次のものだけです。</p>
+      <div class="deflist">
+        <div class="r"><div class="k">あなたが書いた言葉</div><div class="v">投稿の本文・DM（返信）の本文・自己紹介文・ニックネーム。</div></div>
+        <div class="r"><div class="k">匿名ID</div><div class="v">端末内で自動生成される匿名のID（氏名やメールには結びつきません）。表示用の公開ID（例 <code>SEA_ab3F</code>）を含みます。</div></div>
+        <div class="r"><div class="k">選んだ設定・時刻</div><div class="v">選んだアイコンの種類、投稿や既読の時刻など、サービスの動作に必要な最小限の記録。</div></div>
+      </div>
+      <p class="aside">本サービスは、<b>位置情報・連絡先・写真・広告ID・端末を特定する情報を取得しません。</b>また、Google Analytics などの外部の解析・広告サービスを一切組み込んでいません。あなたを他社のデータと突き合わせて追跡すること（トラッキング）は行いません。</p>
+      <p>ブロック・非表示・NGワードの設定は、<b>あなたの端末の中だけに保存され</b>、サーバーには送られません。</p>
+    </article>
+
+    <article class="clause" id="use">
+      <h2><span class="num">02</span>情報の使いみち</h2>
+      <p>取得した情報は、本サービスを提供・維持し、安全に保つためだけに使います。具体的には、投稿やDMの表示、迷惑行為への対応（NGワード・通報・ブロックの処理）、不具合の調査などです。外部への販売のために使うことはありません。</p>
+    </article>
+
+    <article class="clause" id="retention">
+      <h2><span class="num">03</span>保存期間（正直な説明）</h2>
+      <p>「海へ流した言葉は消える」という体験と、実際のデータの保存期間は少し違います。誤解が生まれないよう、正直に書きます。</p>
+      <div class="deflist">
+        <div class="r"><div class="k">投稿（海での表示）</div><div class="v">投稿から <b>48時間</b>で、みんなの海（タイムライン）からは見えなくなります。</div></div>
+        <div class="r"><div class="k">投稿（データの保存）</div><div class="v">あなた自身の記録（マイ投稿）として残すため、データベースには <b>作成から90日</b>保存され、その後に自動で削除されます。</div></div>
+        <div class="r"><div class="k">DM（返信の会話）</div><div class="v"><b>1年間</b>やりとりが無い会話は、自動的に削除されます。</div></div>
+      </div>
+      <p class="aside">DM（返信）は、あなたと相手だけに見える私信ですが、<b>技術的には本サービスのサーバーに保存されます</b>（端末どうしを直接つなぐエンドツーエンド暗号ではありません）。二人だけの完全な秘密ではない点を、あらかじめお伝えします。</p>
+    </article>
+
+    <article class="clause" id="third">
+      <h2><span class="num">04</span>第三者への提供</h2>
+      <p>取得した情報を、あなたの同意なく第三者へ提供・販売することはありません。ただし、法令に基づく開示の求めがある場合や、人の生命・身体・財産を守るために必要な場合は、この限りではありません。</p>
+    </article>
+
+    <article class="clause" id="storage">
+      <h2><span class="num">05</span>情報の保管場所</h2>
+      <p>本サービスは、データベース・認証基盤としてクラウドサービス「Supabase」を利用し、あなたの情報は<b>日本国内（東京リージョン）のサーバーで保管されます</b>。本サービスは、委託先が適切な安全管理を行うよう努めます。</p>
+    </article>
+
+    <article class="clause" id="delete">
+      <h2><span class="num">06</span>アカウントと情報の削除</h2>
+      <p>アプリ内の「アカウント削除」から、いつでもご自身でアカウントを削除できます。削除すると、あなたのプロフィール・投稿・DMなど関連する情報は連鎖的に削除されます。削除は取り消せません。</p>
+    </article>
+
+    <article class="clause" id="age">
+      <h2><span class="num">07</span>対象年齢</h2>
+      <p>本サービスは、利用者どうしが書いた言葉（ユーザー生成コンテンツ）を表示します。運営がすべての内容を事前に確認できるわけではないため、対象年齢を<b>17歳以上</b>としています。未成年の方は、保護者の同意を得たうえでご利用ください。</p>
+    </article>
+
+    <article class="clause" id="change">
+      <h2><span class="num">08</span>本ポリシーの改定</h2>
+      <p>本サービスは、必要に応じて本ポリシーを改定することがあります。重要な変更がある場合は、本サービス上またはこのページでお知らせします。</p>
+    </article>
+
+    <article class="clause" id="contact">
+      <h2><span class="num">09</span>お問い合わせ</h2>
+      <p>本ポリシー・本サービスに関するお問い合わせ、通報・トラブルのご相談は、下記の窓口までご連絡ください。順次、確認・対応します。</p>
+      <div class="contact">
+        <span class="lbl">お問い合わせ窓口</span>
+        <a class="mail" href="mailto:klab12773@gmail.com">klab12773@gmail.com</a>
+        <span class="prov">運営：SEAROOM運営 ／ このアドレスは仮のものです（公開前に確定します）。</span>
+      </div>
+    </article>
+  </div>
+</div>
+
+<footer>
+  <div class="in">
+    <div class="brand2">SEAROOM<span>静かな海に、言葉をそっと置く場所。</span></div>
+    <nav>
+      <a href="index.html#features">特徴</a>
+      <a href="index.html#support">サポート</a>
+      <a href="index.html">ホーム</a>
+    </nav>
+    <div class="copy">© 2026 SEAROOM　運営：SEAROOM運営</div>
+  </div>
+</footer>
+</body>
+</html>

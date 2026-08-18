@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SEAROOM（シールーム）— いいねもフォローもない、静かな匿名SNS。書いた言葉は48時間で海へ還ります。iPhone向け・2026年公開予定。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🌊</text></svg>">
+<title>SEAROOM — 静かな海に、言葉をそっと置く場所。</title>
+<style>
+  :root{
+    --paper:#f4f7f7; --paper2:#ffffff; --sunk:#eef3f3;
+    --ink:#15282e; --body:#3c4d54; --soft:#6f838b; --faint:#95a6ad;
+    --line:#d9e2e4; --line2:#e8eeef;
+    --sea:#1a6377; --sea-deep:#124b5b; --sea-soft:#e2edef;
+    --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Songti SC",serif;
+    --sans:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --paper:#0a1a20; --paper2:#0f2831; --sunk:#0c222b;
+    --ink:#e3edf0; --body:#aec1c9; --soft:#84979f; --faint:#607781;
+    --line:#1d3b45; --line2:#173039;
+    --sea:#67b6cb; --sea-deep:#8fcede; --sea-soft:#0f333f;
+  }}
+  :root[data-theme="dark"]{
+    --paper:#0a1a20; --paper2:#0f2831; --sunk:#0c222b;
+    --ink:#e3edf0; --body:#aec1c9; --soft:#84979f; --faint:#607781;
+    --line:#1d3b45; --line2:#173039;
+    --sea:#67b6cb; --sea-deep:#8fcede; --sea-soft:#0f333f;
+  }
+  :root[data-theme="light"]{
+    --paper:#f4f7f7; --paper2:#ffffff; --sunk:#eef3f3;
+    --ink:#15282e; --body:#3c4d54; --soft:#6f838b; --faint:#95a6ad;
+    --line:#d9e2e4; --line2:#e8eeef;
+    --sea:#1a6377; --sea-deep:#124b5b; --sea-soft:#e2edef;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0; background:var(--paper); color:var(--body);
+    font-family:var(--sans); font-size:16px; line-height:1.9;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  a{color:var(--sea)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset:3px;border-radius:1px}
+
+  .nav{
+    position:sticky; top:0; z-index:10;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    -webkit-backdrop-filter:saturate(1.4) blur(8px); backdrop-filter:saturate(1.4) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .in{max-width:960px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);letter-spacing:.06em;text-decoration:none}
+  .brand .dot{color:var(--sea)}
+  .nav .links{display:flex;gap:26px}
+  .nav .links a{font-size:13.5px;color:var(--soft);text-decoration:none;letter-spacing:.02em}
+  .nav .links a:hover{color:var(--ink)}
+  @media (max-width:560px){.nav .links{gap:18px}.nav .links a{font-size:12.5px}}
+
+  .shell{max-width:960px;margin:0 auto;padding:0 24px}
+  .col{max-width:680px}
+
+  .hero{padding:86px 0 0}
+  .hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);margin:0 0 22px}
+  .hero h1{font-family:var(--serif);color:var(--ink);font-weight:600;font-size:clamp(30px,6vw,46px);line-height:1.4;letter-spacing:.04em;margin:0;text-wrap:balance}
+  .hero .lede{font-family:var(--serif);font-size:clamp(16px,2.6vw,20px);color:var(--sea-deep);margin:20px 0 0;line-height:1.9;letter-spacing:.02em}
+  .hero p.say{margin:22px 0 0;color:var(--body);font-size:15.5px;max-width:56ch}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:30px 0 0}
+  .hero .tag{font-size:12.5px;color:var(--soft);border:1px solid var(--line);border-radius:2px;padding:5px 12px;letter-spacing:.04em}
+  .hero .tag b{color:var(--ink);font-weight:600}
+  .horizon{height:1px;background:linear-gradient(90deg,transparent,var(--sea) 12%,var(--sea) 88%,transparent);opacity:.34;margin:64px 0 0}
+
+  section.band{padding:60px 0}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin:0 0 6px}
+  h2.head{font-family:var(--serif);color:var(--ink);font-size:26px;font-weight:600;letter-spacing:.04em;margin:0 0 26px;scroll-margin-top:76px}
+
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+  @media (max-width:620px){.compare{grid-template-columns:1fr}}
+  .compare .side{padding:22px 0}
+  .compare .side.left{padding-right:32px;border-right:1px solid var(--line)}
+  .compare .side.right{padding-left:32px}
+  @media (max-width:620px){
+    .compare .side.left{padding-right:0;border-right:0;border-bottom:1px solid var(--line)}
+    .compare .side.right{padding-left:0}
+  }
+  .compare h3{font-size:13px;letter-spacing:.1em;margin:0 0 14px;font-weight:600}
+  .compare .left h3{color:var(--soft)}
+  .compare .right h3{color:var(--sea)}
+  .compare ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .compare li{font-size:15px;color:var(--body);padding-left:20px;position:relative;line-height:1.7}
+  .compare .left li::before{content:"—";position:absolute;left:0;color:var(--faint)}
+  .compare .right li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--sea)}
+  .compare li b{color:var(--ink);font-weight:600}
+  .compare .note{grid-column:1/-1;border-top:1px solid var(--line);margin-top:22px;padding-top:20px;color:var(--soft);font-size:14px;max-width:60ch}
+
+  .faq{border-top:1px solid var(--line)}
+  .faq .qa{padding:22px 0;border-bottom:1px solid var(--line);max-width:70ch}
+  .faq .q{font-size:15.5px;font-weight:600;color:var(--ink);margin:0 0 8px}
+  .faq .a{margin:0;font-size:14.5px;color:var(--body)}
+  .faq .a a{color:var(--sea)}
+  .contact{margin:30px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;padding:20px 22px;background:var(--paper2);border:1px solid var(--line);border-radius:3px}
+  .contact .lbl{font-size:13px;color:var(--soft)}
+  .contact a.mail{font-family:var(--mono);font-size:17px;color:var(--sea);text-decoration:none;font-weight:600;border-bottom:1px solid var(--line)}
+  .contact a.mail:hover{border-color:var(--sea)}
+  .contact .prov{width:100%;font-size:12.5px;color:var(--faint);margin-top:4px}
+
+  footer{border-top:1px solid var(--line);margin-top:40px}
+  footer .in{max-width:960px;margin:0 auto;padding:34px 24px 56px;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-start}
+  footer .brand2{font-family:var(--serif);font-size:16px;color:var(--ink);letter-spacing:.06em}
+  footer .brand2 span{display:block;font-family:var(--sans);font-size:12.5px;color:var(--soft);letter-spacing:0;margin-top:6px}
+  footer nav{display:flex;gap:22px;flex-wrap:wrap}
+  footer nav a{font-size:13px;color:var(--soft);text-decoration:none}
+  footer nav a:hover{color:var(--ink)}
+  footer .copy{width:100%;border-top:1px solid var(--line2);padding-top:16px;font-size:12px;color:var(--faint);font-family:var(--mono);letter-spacing:.03em}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="in">
+    <a class="brand" href="#top">SEAROOM<span class="dot">.</span></a>
+    <nav class="links">
+      <a href="#features">特徴</a>
+      <a href="privacy.html">プライバシー</a>
+      <a href="#support">サポート</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<div class="shell">
+  <section class="hero">
+    <p class="kicker">Quiet SNS for iPhone</p>
+    <div class="col">
+      <h1>静かな海に、言葉をそっと置く場所。</h1>
+      <p class="lede">評価も、フォローもありません。ただ、その瞬間の言葉を。</p>
+      <p class="say">SEAROOM（シールーム）は、SNSに疲れた人のための匿名SNSです。書いた言葉は海へ流す一通の手紙のように広場を流れ、48時間後にそっと海へ還っていきます。数字に追われることも、誰かと比べることもありません。</p>
+      <div class="meta">
+        <span class="tag"><b>iPhone</b> 向け</span>
+        <span class="tag">2026年 公開予定</span>
+        <span class="tag">登録・ログイン不要</span>
+      </div>
+    </div>
+  </section>
+  <div class="horizon"></div>
+</div>
+
+<div class="shell">
+  <section class="band" id="features">
+    <p class="eyebrow">What it is</p>
+    <h2 class="head">疲れる仕組みを、置いていく</h2>
+    <div class="compare">
+      <div class="side left">
+        <h3>ここに「ない」もの</h3>
+        <ul>
+          <li>いいね・フォロー・リアクション</li>
+          <li>おすすめ表示やアルゴリズム</li>
+          <li>閲覧数や「読まれた数」</li>
+          <li>フォロワーの数</li>
+        </ul>
+      </div>
+      <div class="side right">
+        <h3>ここに「ある」もの</h3>
+        <ul>
+          <li><b>完全な時系列</b>で流れるタイムライン</li>
+          <li>メールも電話番号もいらない<b>匿名アカウント</b></li>
+          <li>気になった言葉にそっと届く<b>一対一の返信</b></li>
+          <li>安心のための<b>通報・ブロック・NGワード</b></li>
+        </ul>
+      </div>
+      <p class="note">言葉が主役で、人が主役ではない。そんな場所で、今日のひとことを海に置いてみませんか。投稿は48時間でタイムラインから消えます。メールアドレス・電話番号・氏名は、一切登録不要です。</p>
+    </div>
+  </section>
+</div>
+
+<div class="shell">
+  <section class="band" id="support">
+    <p class="eyebrow">Support</p>
+    <h2 class="head">サポート・お問い合わせ</h2>
+    <div class="faq">
+      <div class="qa">
+        <p class="q">問い合わせの返事はどれくらいで来ますか？</p>
+        <p class="a">運営が順次、確認・対応します。内容によってお時間をいただく場合があります。</p>
+      </div>
+      <div class="qa">
+        <p class="q">不快な投稿や利用者を見つけたら？</p>
+        <p class="a">投稿の右下から通報できます。複数の通報が集まった投稿は自動的に一時非表示になり、運営が確認します。特定の相手はブロックで自分の画面から見えなくできます。</p>
+      </div>
+      <div class="qa">
+        <p class="q">アカウントを消したい／データを消したい</p>
+        <p class="a">アプリ内の「アカウント削除」から、いつでもご自身で削除できます。関連する投稿・DMも連鎖的に削除され、取り消しはできません。</p>
+      </div>
+      <div class="qa">
+        <p class="q">どんな情報を集めていますか？</p>
+        <p class="a">メール・電話番号・氏名は集めません。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+      </div>
+    </div>
+    <div class="contact">
+      <span class="lbl">お問い合わせ窓口</span>
+      <a class="mail" href="mailto:klab12773@gmail.com">klab12773@gmail.com</a>
+      <span class="prov">運営：SEAROOM運営 ／ このアドレスは仮のものです（公開前に確定します）。</span>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="in">
+    <div class="brand2">SEAROOM<span>静かな海に、言葉をそっと置く場所。</span></div>
+    <nav>
+      <a href="#features">特徴</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="#support">サポート</a>
+      <a href="mailto:klab12773@gmail.com">お問い合わせ</a>
+    </nav>
+    <div class="copy">© 2026 SEAROOM　運営：SEAROOM運営</div>
+  </div>
+</footer>
+</body>
+</html>
